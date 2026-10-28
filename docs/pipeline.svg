@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 350" width="1100" height="350" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4A5568"/>
+    </marker>
+  </defs>
+
+  <!-- solid background so the diagram reads in GitHub light and dark themes -->
+  <rect x="0" y="0" width="1100" height="350" rx="14" fill="#FFFFFF"/>
+
+  <!-- main flow -->
+  <g text-anchor="middle">
+    <rect x="25" y="35" width="150" height="90" rx="10" fill="#F1F3F5" stroke="#868E96" stroke-width="1.5"/>
+    <text x="100" y="66" font-size="15" font-weight="600" fill="#212529">Question</text>
+    <text x="100" y="88" font-size="12.5" fill="#495057">+ query time</text>
+    <text x="100" y="106" font-size="12.5" fill="#495057">+ web pages (HTML)</text>
+
+    <rect x="205" y="35" width="150" height="90" rx="10" fill="#EAF2FB" stroke="#3B6EA8" stroke-width="1.5"/>
+    <text x="280" y="70" font-size="15" font-weight="600" fill="#1C3D63">1. Dedup</text>
+    <text x="280" y="94" font-size="12.5" fill="#34495E">remove duplicate pages</text>
+
+    <rect x="385" y="35" width="150" height="90" rx="10" fill="#EAF2FB" stroke="#3B6EA8" stroke-width="1.5"/>
+    <text x="460" y="70" font-size="15" font-weight="600" fill="#1C3D63">2. Parse</text>
+    <text x="460" y="94" font-size="12.5" fill="#34495E">HTML → text segments</text>
+
+    <rect x="565" y="35" width="150" height="90" rx="10" fill="#EAF2FB" stroke="#3B6EA8" stroke-width="1.5"/>
+    <text x="640" y="66" font-size="15" font-weight="600" fill="#1C3D63">3. Re-rank</text>
+    <text x="640" y="88" font-size="12.5" fill="#34495E">cross-encoder</text>
+    <text x="640" y="106" font-size="12.5" fill="#34495E">keep top-10 segments</text>
+
+    <rect x="745" y="35" width="150" height="90" rx="10" fill="#EAF2FB" stroke="#3B6EA8" stroke-width="1.5"/>
+    <text x="820" y="66" font-size="15" font-weight="600" fill="#1C3D63">4. Generate</text>
+    <text x="820" y="88" font-size="12.5" fill="#34495E">8B LLM, 4-bit + LoRA</text>
+    <text x="820" y="106" font-size="12.5" fill="#34495E">answer ≤ 30 words</text>
+
+    <rect x="925" y="35" width="150" height="90" rx="10" fill="#E6F4EA" stroke="#2F855A" stroke-width="1.5"/>
+    <text x="1000" y="70" font-size="15" font-weight="600" fill="#1E5631">Answer</text>
+    <text x="1000" y="94" font-size="12.5" fill="#2D3B33">or “i don't know”</text>
+  </g>
+
+  <g fill="none" stroke="#4A5568" stroke-width="1.6" marker-end="url(#arrow)">
+    <path d="M175 80 H203"/>
+    <path d="M355 80 H383"/>
+    <path d="M535 80 H563"/>
+    <path d="M715 80 H743"/>
+    <path d="M895 80 H923"/>
+  </g>
+
+  <!-- Task 2 knowledge-graph branch -->
+  <rect x="190" y="200" width="365" height="130" rx="12" fill="none" stroke="#B7791F" stroke-width="1.3" stroke-dasharray="6 5"/>
+  <text x="204" y="220" font-size="12.5" font-weight="600" fill="#8A5A12">Task 2 only</text>
+
+  <g text-anchor="middle">
+    <rect x="205" y="230" width="150" height="85" rx="10" fill="#FDF3E1" stroke="#B7791F" stroke-width="1.5"/>
+    <text x="280" y="262" font-size="15" font-weight="600" fill="#6B4410">LLM writes</text>
+    <text x="280" y="281" font-size="15" font-weight="600" fill="#6B4410">API call</text>
+    <text x="280" y="301" font-size="12.5" fill="#5C4A2E">LoRA adapter “api”</text>
+
+    <rect x="385" y="230" width="150" height="85" rx="10" fill="#FDF3E1" stroke="#B7791F" stroke-width="1.5"/>
+    <text x="460" y="262" font-size="15" font-weight="600" fill="#6B4410">Mock KG API</text>
+    <text x="460" y="283" font-size="12.5" fill="#5C4A2E">finance · movie · music</text>
+    <text x="460" y="301" font-size="12.5" fill="#5C4A2E">sports · open</text>
+  </g>
+
+  <g fill="none" stroke="#4A5568" stroke-width="1.6" marker-end="url(#arrow)">
+    <path d="M100 125 V272 H203"/>
+    <path d="M355 272 H383"/>
+    <path d="M535 272 H640 V127"/>
+  </g>
+  <text x="652" y="205" font-size="12.5" fill="#495057">API results added</text>
+  <text x="652" y="222" font-size="12.5" fill="#495057">as extra documents</text>
+</svg>
